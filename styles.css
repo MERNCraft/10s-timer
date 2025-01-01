@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  color: #ddd;
+  background-color: #222;
+
+  counter-reset: countdown 10;
+}
+
+main {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  background-color: #333;
+}
+
+label {
+  display: block;
+}
+
+div {
+  text-align: right;
+  margin-right: 48px;
+}
+
+div::after {
+  font-size: 256px;
+  line-height: 1em;
+  content: counter(countdown);
+}
+
+body:has(input#paused:checked) div,
+body:has(input#play:checked) div {
+  animation-name: timer;
+  animation-duration: 10s;
+  animation-fill-mode: forwards;
+  animation-timing-function: step-end;
+}
+
+body:has(input#paused:checked) div {
+  animation-play-state: paused;
+}
+
+@keyframes timer {
+  0% { counter-increment: countdown   0; }
+ 10% { counter-increment: countdown  -1; }
+ 20% { counter-increment: countdown  -2; }
+ 30% { counter-increment: countdown  -3; }
+ 40% { counter-increment: countdown  -4; }
+ 50% { counter-increment: countdown  -5; }
+ 60% { counter-increment: countdown  -6; }
+ 70% { counter-increment: countdown  -7; }
+ 80% { counter-increment: countdown  -8; }
+ 90% { counter-increment: countdown  -9; }
+100% { counter-increment: countdown -10;
+       color: #900;
+     }
+}
+
+/* Show the GitHub logo */
+a.github {
+  width: 0;
+  height: 0;
+
+  img {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 32px;
+    height: 32px;
+    filter: grayscale(1);
+    opacity: 0.25;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
