@@ -13,30 +13,34 @@ main {
   overflow: hidden;
 }
 
-label {
-  display: block;
+div#controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  height: 60px;
+
 }
 
-div {
+div#animation {
   text-align: right;
   margin-right: 48px;
 }
 
-div::after {
+div#animation::after {
   font-size: 256px;
   line-height: 1em;
   content: counter(countdown);
 }
 
-body:has(input#paused:checked) div,
-body:has(input#play:checked) div {
+body:has(input#paused:checked) div#animation,
+body:has(input#play:checked) div#animation {
   animation-name: timer;
   animation-duration: 10s;
   animation-fill-mode: forwards;
   animation-timing-function: step-end;
 }
 
-body:has(input#paused:checked) div {
+body:has(input#paused:checked) div#animation {
   animation-play-state: paused;
 }
 
